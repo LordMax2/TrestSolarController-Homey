@@ -1,0 +1,28 @@
+{
+  "id": "se.klevebrand.solar",
+  "version": "1.0.0",
+  "compatibility": ">=5.0.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "Klevebrand Solar Controller"
+  },
+  "description": {
+    "en": "This application is an interface to gather data and communicate with an IoT device which can control your solar inverter on your solar grid. "
+  },
+  "category": [
+    "energy"
+  ],
+  "permissions": [],
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Max Klevebrand",
+    "email": "max.klevebrand@gmail.com"
+  }
+}
