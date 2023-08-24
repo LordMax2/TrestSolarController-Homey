@@ -1,0 +1,11 @@
+{
+    "type": "string",
+    "title": { 
+        "en": "Solar grid now generating",
+        "sv": "Solanläggningen genererar nu"
+     },
+    "getable": true,
+    "setable": false,
+    "uiQuickAction": false,
+    "icon": "/assets/solar-panel.svg"
+  }

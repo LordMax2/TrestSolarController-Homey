@@ -31,12 +31,15 @@
       "name": {
         "en": "Klevebrand Solar Controller"
       },
-      "class": "other",
+      "class": "solarpanel",
       "capabilities": [
         "measure_battery",
-        "button",
-        "meter_power",
-        "measure_power"
+        "sell_button",
+        "self_sufficient_button",
+        "buy_button",
+        "battery_charging",
+        "real_time_solar",
+        "total_load_active_power"
       ],
       "platforms": [
         "local"
@@ -64,5 +67,70 @@
       ],
       "id": "klevebrand-solar-controller"
     }
-  ]
+  ],
+  "capabilities": {
+    "battery_charging": {
+      "type": "string",
+      "title": {
+        "en": "Battery is now charging",
+        "sv": "Batteriet laddar nu"
+      },
+      "getable": true,
+      "setable": false,
+      "uiQuickAction": false,
+      "icon": "/assets/battery_charge.svg"
+    },
+    "buy_button": {
+      "type": "boolean",
+      "title": {
+        "en": "Buy mode",
+        "sv": "Köp läge"
+      },
+      "getable": true,
+      "setable": true,
+      "uiQuickAction": false
+    },
+    "real_time_solar": {
+      "type": "string",
+      "title": {
+        "en": "Solar grid now generating",
+        "sv": "Solanläggningen genererar nu"
+      },
+      "getable": true,
+      "setable": false,
+      "uiQuickAction": false,
+      "icon": "/assets/solar-panel.svg"
+    },
+    "self_sufficient_button": {
+      "type": "boolean",
+      "title": {
+        "en": "Self sufficient mode",
+        "sv": "Självförsörjande"
+      },
+      "getable": true,
+      "setable": true,
+      "uiQuickAction": false
+    },
+    "sell_button": {
+      "type": "boolean",
+      "title": {
+        "en": "Sell mode",
+        "sv": "Sälj läge"
+      },
+      "getable": true,
+      "setable": true,
+      "uiQuickAction": false
+    },
+    "total_load_active_power": {
+      "type": "string",
+      "title": {
+        "en": "Total load active power",
+        "sv": "Huset drar just nu"
+      },
+      "getable": true,
+      "setable": false,
+      "uiQuickAction": false,
+      "icon": "/assets/house.svg"
+    }
+  }
 }

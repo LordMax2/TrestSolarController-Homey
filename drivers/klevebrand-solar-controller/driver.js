@@ -81,11 +81,11 @@ class MyDriver extends Driver {
       });
 
       socket.on('error', () => { 
-        reject(new Error(ipAddress)); 
+
       });
   
       socket.on('timeout', () => {
-        reject(new Error(ipAddress)); 
+
       });
 
     });

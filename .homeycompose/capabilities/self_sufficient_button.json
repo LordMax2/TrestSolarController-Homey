@@ -1,0 +1,10 @@
+{
+    "type": "boolean",
+    "title": { 
+        "en": "Self sufficient mode",
+        "sv": "Självförsörjande"
+     },
+    "getable": true,
+    "setable": true,
+    "uiQuickAction": false
+  }

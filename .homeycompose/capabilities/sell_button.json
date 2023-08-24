@@ -1,0 +1,10 @@
+{
+    "type": "boolean",
+    "title": { 
+        "en": "Sell mode",
+        "sv": "Sälj läge"
+     },
+    "getable": true,
+    "setable": true,
+    "uiQuickAction": false
+  }

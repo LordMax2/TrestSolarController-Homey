@@ -1,0 +1,10 @@
+{
+    "type": "boolean",
+    "title": { 
+        "en": "Buy mode",
+        "sv": "Köp läge"
+     },
+    "getable": true,
+    "setable": true,
+    "uiQuickAction": false
+  }

@@ -5,6 +5,10 @@ const https = require('https');
 
 class MyDevice extends Device {
   async onInit() {
+    this.registerCapabilityListener('sell_button', this.setEnergyMode.bind(this, 5));
+    this.registerCapabilityListener('buy_button', this.setEnergyMode.bind(this, 4));
+    this.registerCapabilityListener('self_sufficient_button', this.setEnergyMode.bind(this, 1));
+
     this.log('Klevebrand Solar Controller has been initialized');
     this.log('Ip address: ' + this.getStoreValue("address"));
 
@@ -22,6 +26,26 @@ class MyDevice extends Device {
     }, 30000); // 30 seconds in milliseconds
   }
 
+  async setEnergyMode(energyMode) {
+    await this.httpSetEnergyMode(energyMode);
+  }
+
+  async httpSetEnergyMode(energyMode) {
+    const options = {
+      hostname: this.getStoreValue("address"),
+      port: 7299,
+      path: `/api/v1/solar/CreateSolarHistoryAndSetEnergyProfile/${energyMode}`,
+      method: 'POST',
+      rejectUnauthorized: false // Allow self-signed certificates
+    };
+
+    try {
+      const jsonData = JSON.parse(await this.sendHttpRequest(options));
+    } catch (error) {
+
+    }
+  }
+
   async httpGetSolarHistory(ipAddress) {
     const options = {
       hostname: ipAddress,
@@ -33,12 +57,12 @@ class MyDevice extends Device {
 
     try {
       const jsonData = JSON.parse(await this.sendHttpRequest(options));
-      
-      this.log(parseFloat(parseFloat(jsonData.batteryCharge.slice(0, -2)) - parseFloat(jsonData.batteryDischarge.slice(0, -2))));
-
+ 
       if (jsonData) {
+        this.setCapabilityValue('real_time_solar', jsonData.realtimeSolar);
         this.setCapabilityValue('measure_battery', parseInt(jsonData.batteryCapacity));
-        this.setCapabilityValue('measure_power', parseFloat(parseFloat(jsonData.batteryCharge.slice(0, -2)) - parseFloat(jsonData.batteryDischarge.slice(0, -2))));
+        this.setCapabilityValue('total_load_active_power', jsonData.totalLoadActivePower);
+        this.setCapabilityValue('battery_charging', parseFloat(parseFloat(jsonData.batteryCharge.slice(0, -2)) - parseFloat(jsonData.batteryDischarge.slice(0, -2))) + "kWh");
       } else {
         this.error('Battery capacity data not available');
       }
@@ -73,7 +97,7 @@ class MyDevice extends Device {
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    this.log('MyDevice has been added');
+    this.log('Klevebrand Solar Controller has been added');
   }
 
   /**
@@ -85,7 +109,7 @@ class MyDevice extends Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('MyDevice settings where changed');
+    this.log('Klevebrand Solar Controller settings where changed');
   }
 
   /**
@@ -94,14 +118,14 @@ class MyDevice extends Device {
    * @param {string} name The new name
    */
   async onRenamed(name) {
-    this.log('MyDevice was renamed');
+    this.log('Klevebrand Solar Controller was renamed');
   }
 
   /**
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
-    this.log('MyDevice has been deleted');
+    this.log('Klevebrand Solar Controller has been deleted');
   }
 
 }

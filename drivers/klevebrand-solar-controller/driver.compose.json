@@ -2,12 +2,15 @@
   "name": {
     "en": "Klevebrand Solar Controller"
   },
-  "class": "other",
+  "class": "solarpanel",
   "capabilities": [
     "measure_battery",
-    "button",
-    "meter_power",
-    "measure_power"
+    "sell_button",
+    "self_sufficient_button",
+    "buy_button",
+    "battery_charging",
+    "real_time_solar",
+    "total_load_active_power"
   ],
   "platforms": [
     "local"
