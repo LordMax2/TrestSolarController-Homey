@@ -11,6 +11,21 @@ class MyDriver extends Driver {
    */
   async onInit() {
     this.log('Klevebrand Solar Controller has been initialized!');
+
+    const sellCard = this.homey.flow.getActionCard('sell-mode');
+    sellCard.registerRunListener(async (args) => {
+      args.setEnergyMode(5);
+    });
+
+    const buyCard = this.homey.flow.getActionCard('buy-mode');
+    buyCard.registerRunListener(async (args) => {
+      args.setEnergyMode(4);
+    });
+
+    const selfSufficientCard = this.homey.flow.getActionCard('self-sufficient-mode');
+    selfSufficientCard.registerRunListener(async (args) => {
+      args.setEnergyMode(1);
+    });
   }
 
   /**

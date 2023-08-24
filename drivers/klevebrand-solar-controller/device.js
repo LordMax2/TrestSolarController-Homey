@@ -8,6 +8,7 @@ class MyDevice extends Device {
     this.registerCapabilityListener('sell_button', this.setEnergyMode.bind(this, 5));
     this.registerCapabilityListener('buy_button', this.setEnergyMode.bind(this, 4));
     this.registerCapabilityListener('self_sufficient_button', this.setEnergyMode.bind(this, 1));
+    this.registerCapabilityListener('pause_button', this.setEnergyMode.bind(this, 6));
 
     this.log('Klevebrand Solar Controller has been initialized');
     this.log('Ip address: ' + this.getStoreValue("address"));

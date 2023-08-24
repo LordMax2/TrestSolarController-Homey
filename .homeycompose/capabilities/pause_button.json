@@ -1,0 +1,10 @@
+{
+    "type": "boolean",
+    "title": { 
+        "en": "Pause mode",
+        "sv": "Pause läge"
+     },
+    "getable": true,
+    "setable": true,
+    "uiQuickAction": false
+  }

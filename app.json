@@ -26,6 +26,96 @@
     "name": "Max Klevebrand",
     "email": "max.klevebrand@gmail.com"
   },
+  "flow": {
+    "triggers": [
+      {
+        "id": "solar-generating",
+        "title": {
+          "en": "Solar panels are generating more than X",
+          "sv": "Solpanelerna genererar mer än X"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      },
+      {
+        "id": "current-charging more than",
+        "title": {
+          "en": "Battery is charging more than",
+          "sv": "Batteriet laddar mer än"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "buy-mode",
+        "title": {
+          "en": "Set buy mode",
+          "sv": "Sätt köp läge"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      },
+      {
+        "id": "sell-mode",
+        "title": {
+          "en": "Set sell mode",
+          "sv": "Sätt sälj läge"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      },
+      {
+        "id": "self-sufficient-mode",
+        "title": {
+          "en": "Set self sufficient mode",
+          "sv": "Sätt självförsörjande läge"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      },
+      {
+        "id": "pause-mode",
+        "title": {
+          "en": "Set pause mode",
+          "sv": "Sätt pause läge"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=klevebrand-solar-controller"
+          }
+        ]
+      }
+    ]
+  },
   "drivers": [
     {
       "name": {
@@ -37,6 +127,7 @@
         "sell_button",
         "self_sufficient_button",
         "buy_button",
+        "pause_button",
         "battery_charging",
         "real_time_solar",
         "total_load_active_power"
@@ -85,6 +176,16 @@
       "title": {
         "en": "Buy mode",
         "sv": "Köp läge"
+      },
+      "getable": true,
+      "setable": true,
+      "uiQuickAction": false
+    },
+    "pause_button": {
+      "type": "boolean",
+      "title": {
+        "en": "Pause mode",
+        "sv": "Pause läge"
       },
       "getable": true,
       "setable": true,

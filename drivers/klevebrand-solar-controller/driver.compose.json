@@ -8,6 +8,7 @@
     "sell_button",
     "self_sufficient_button",
     "buy_button",
+    "pause_button",
     "battery_charging",
     "real_time_solar",
     "total_load_active_power"
