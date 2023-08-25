@@ -1,97 +1,20 @@
 'use strict';
 
 const { Device } = require('homey');
-const https = require('https');
+const DeviceHandler = require('../lib/DeviceHandler.js');
 
 class MyDevice extends Device {
   async onInit() {
-    this.registerCapabilityListener('sell_button', this.setEnergyMode.bind(this, 5));
-    this.registerCapabilityListener('buy_button', this.setEnergyMode.bind(this, 4));
-    this.registerCapabilityListener('self_sufficient_button', this.setEnergyMode.bind(this, 1));
-    this.registerCapabilityListener('pause_button', this.setEnergyMode.bind(this, 6));
+    const deviceHandler = new DeviceHandler();
+    await deviceHandler.Init();
+
+    this.registerCapabilityListener('sell_button', deviceHandler.httpSetEnergyMode.bind(this, 5));
+    this.registerCapabilityListener('buy_button', deviceHandler.httpSetEnergyMode.bind(this, 4));
+    this.registerCapabilityListener('self_sufficient_button', deviceHandler.httpSetEnergyMode.bind(this, 1));
+    this.registerCapabilityListener('pause_button', deviceHandler.httpSetEnergyMode.bind(this, 6));
 
     this.log('Klevebrand Solar Controller has been initialized');
     this.log('Ip address: ' + this.getStoreValue("address"));
-
-    // Call httpGetSolarHistory immediately when the device is initialized
-    await this.httpGetSolarHistory(this.getStoreValue("address"));
-
-    // Set up an interval to call httpGetSolarHistory every 30 seconds
-    this.solarHistoryInterval = setInterval(async () => {
-      try {
-        await this.httpGetSolarHistory(this.getStoreValue("address"));
-        this.log("Updated battery status");
-      } catch (error) {
-        this.error('Failed to fetch solar history:', error);
-      }
-    }, 30000); // 30 seconds in milliseconds
-  }
-
-  async setEnergyMode(energyMode) {
-    await this.httpSetEnergyMode(energyMode);
-  }
-
-  async httpSetEnergyMode(energyMode) {
-    const options = {
-      hostname: this.getStoreValue("address"),
-      port: 7299,
-      path: `/api/v1/solar/CreateSolarHistoryAndSetEnergyProfile/${energyMode}`,
-      method: 'POST',
-      rejectUnauthorized: false // Allow self-signed certificates
-    };
-
-    try {
-      const jsonData = JSON.parse(await this.sendHttpRequest(options));
-    } catch (error) {
-
-    }
-  }
-
-  async httpGetSolarHistory(ipAddress) {
-    const options = {
-      hostname: ipAddress,
-      port: 7299,
-      path: '/api/v1/solar/GetLatestSolarHistory',
-      method: 'GET',
-      rejectUnauthorized: false // Allow self-signed certificates
-    };
-
-    try {
-      const jsonData = JSON.parse(await this.sendHttpRequest(options));
- 
-      if (jsonData) {
-        this.setCapabilityValue('real_time_solar', jsonData.realtimeSolar);
-        this.setCapabilityValue('measure_battery', parseInt(jsonData.batteryCapacity));
-        this.setCapabilityValue('total_load_active_power', jsonData.totalLoadActivePower);
-        this.setCapabilityValue('battery_charging', parseFloat(parseFloat(jsonData.batteryCharge.slice(0, -2)) - parseFloat(jsonData.batteryDischarge.slice(0, -2))) + "kWh");
-      } else {
-        this.error('Battery capacity data not available');
-      }
-    } catch (error) {
-      this.error('Failed to fetch solar history:', error);
-    }
-  }
-
-  sendHttpRequest(options) {
-    return new Promise((resolve, reject) => {
-      const req = https.request(options, (response) => {
-        let data = '';
-
-        response.on('data', (chunk) => {
-          data += chunk;
-        });
-
-        response.on('end', () => {
-          resolve(data);
-        });
-      });
-
-      req.on('error', (error) => {
-        reject(error);
-      });
-
-      req.end();
-    });
   }
 
   /**

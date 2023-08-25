@@ -3,6 +3,7 @@
 const { Driver } = require('homey');
 const net = require('net');
 const os = require('os');
+const HttpHandler = require('../HttpHandler.js');
 
 class MyDriver extends Driver {
 
@@ -34,11 +35,13 @@ class MyDriver extends Driver {
    * This should return an array with the data of devices that are available for pairing.
    */
   async onPairListDevices() {
+    const httpHandler = new HttpHandler();
+
     this.log("Searching for device...");
-    const localIp = this.getLocalIpAddress();
+    const localIp = httpHandler.getLocalIpAddress();
     const subnet = localIp.split('.').slice(0, 3).join('.');
 
-    var deviceIp = await this.findFirstSuccessfulConnection(2, 254, 7299, subnet);
+    var deviceIp = await httpHandler.findFirstSuccessfulConnection(2, 254, 7299, subnet);
 
     this.log(`Found device with ip address: ${deviceIp}`);
 
