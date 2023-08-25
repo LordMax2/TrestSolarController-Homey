@@ -1,32 +1,18 @@
 'use strict';
 
 const { Driver } = require('homey');
-const net = require('net');
-const os = require('os');
-const HttpHandler = require('../HttpHandler.js');
+const FLowHandler = require('../../lib/FlowHandler.js');
 
-class MyDriver extends Driver {
-
+class KlevebrandSolarControllerDriver extends Driver {
   /**
    * onInit is called when the driver is initialized.
    */
   async onInit() {
-    this.log('Klevebrand Solar Controller has been initialized!');
+    const flowHandler = new FLowHandler();
 
-    const sellCard = this.homey.flow.getActionCard('sell-mode');
-    sellCard.registerRunListener(async (args) => {
-      args.setEnergyMode(5);
-    });
+    flowHandler.Init(this);
 
-    const buyCard = this.homey.flow.getActionCard('buy-mode');
-    buyCard.registerRunListener(async (args) => {
-      args.setEnergyMode(4);
-    });
-
-    const selfSufficientCard = this.homey.flow.getActionCard('self-sufficient-mode');
-    selfSufficientCard.registerRunListener(async (args) => {
-      args.setEnergyMode(1);
-    });
+    this.log('Klevebrand Solar Controller driver has been initialized!');
   }
 
   /**
@@ -35,13 +21,11 @@ class MyDriver extends Driver {
    * This should return an array with the data of devices that are available for pairing.
    */
   async onPairListDevices() {
-    const httpHandler = new HttpHandler();
+    const deviceHandler = new DeviceHandler();
 
     this.log("Searching for device...");
-    const localIp = httpHandler.getLocalIpAddress();
-    const subnet = localIp.split('.').slice(0, 3).join('.');
 
-    var deviceIp = await httpHandler.findFirstSuccessfulConnection(2, 254, 7299, subnet);
+    var deviceIp = await deviceHandler.discoverDevice();
 
     this.log(`Found device with ip address: ${deviceIp}`);
 
@@ -57,57 +41,6 @@ class MyDriver extends Driver {
       }
     ];
   }
-
-  getLocalIpAddress() {
-    const interfaces = os.networkInterfaces();
-    for (const interfaceName of Object.keys(interfaces)) {
-      for (const iface of interfaces[interfaceName]) {
-        if (iface.family === 'IPv4' && !iface.internal) {
-          return iface.address;
-        }
-      }
-    }
-    return null;
-  }
-
-  async findFirstSuccessfulConnection(start, end, port, subnet) {
-    const promises = [];
-  
-    for (let i = start; i <= end; i++) {
-      const ipAddress = `${subnet}.${i}`;
-      promises.push(this.testTCPConnection(ipAddress, port));
-    }
-  
-    return Promise.any(promises).then((value) => {
-      console.log("Successful connection to: " + value);
-      return value; // Return the resolved value
-    }).catch((error) => {
-      console.log("No successful connections found.");
-      return null; // Return null if all promises are rejected
-    });
-  }
-  
-  async testTCPConnection(ipAddress, port) {
-    return new Promise((resolve, reject) => {
-      const socket = new net.Socket();
-  
-      socket.setTimeout(1000); // Set a timeout for the connection attempt
-  
-      socket.connect(port, ipAddress, () => {
-        console.log(`Successful TCP connection to ${ipAddress}:${port}`);
-        resolve(ipAddress);          
-      });
-
-      socket.on('error', () => { 
-
-      });
-  
-      socket.on('timeout', () => {
-
-      });
-
-    });
-  } 
 }
 
-module.exports = MyDriver;
+module.exports = KlevebrandSolarControllerDriver;

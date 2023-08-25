@@ -1,19 +1,16 @@
 'use strict';
 
 const { Device } = require('homey');
-const DeviceHandler = require('../lib/DeviceHandler.js');
+const DeviceHandler = require('../../lib/DeviceHandler.js');
 
-class MyDevice extends Device {
+class KlevebrandSolarControllerDevice extends Device {
   async onInit() {
     const deviceHandler = new DeviceHandler();
-    await deviceHandler.Init();
 
-    this.registerCapabilityListener('sell_button', deviceHandler.httpSetEnergyMode.bind(this, 5));
-    this.registerCapabilityListener('buy_button', deviceHandler.httpSetEnergyMode.bind(this, 4));
-    this.registerCapabilityListener('self_sufficient_button', deviceHandler.httpSetEnergyMode.bind(this, 1));
-    this.registerCapabilityListener('pause_button', deviceHandler.httpSetEnergyMode.bind(this, 6));
+    await deviceHandler.Init(this);
+    await deviceHandler.InitButtons(this);
 
-    this.log('Klevebrand Solar Controller has been initialized');
+    this.log('Klevebrand Solar Controller device has been initialized');
     this.log('Ip address: ' + this.getStoreValue("address"));
   }
 
@@ -33,7 +30,7 @@ class MyDevice extends Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('Klevebrand Solar Controller settings where changed');
+    this.log('Klevebrand Solar Controller device settings where changed');
   }
 
   /**
@@ -42,16 +39,16 @@ class MyDevice extends Device {
    * @param {string} name The new name
    */
   async onRenamed(name) {
-    this.log('Klevebrand Solar Controller was renamed');
+    this.log('Klevebrand Solar Controller device was renamed');
   }
 
   /**
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
-    this.log('Klevebrand Solar Controller has been deleted');
+    this.log('Klevebrand Solar Controller device has been deleted');
   }
 
 }
 
-module.exports = MyDevice;
+module.exports = KlevebrandSolarControllerDevice;
