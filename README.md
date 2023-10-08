@@ -1,4 +1,4 @@
-# Klevebrand Solar Controller
+# Trest Solar Controller
 
 I will update this readme and add the OpenAPI documents to the Klevebrand Solar Controller soon! 
 
