@@ -3,14 +3,14 @@
 const { Device } = require('homey');
 const DeviceHandler = require('../../lib/DeviceHandler.js');
 
-class KlevebrandSolarControllerDevice extends Device {
+class TrestSolarControllerDevice extends Device {
   async onInit() {
     const deviceHandler = new DeviceHandler();
 
     await deviceHandler.Init(this);
     await deviceHandler.InitButtons(this);
 
-    this.log('Klevebrand Solar Controller device has been initialized');
+    this.log('Trest Solar Controller device has been initialized');
     this.log('Ip address: ' + this.getStoreValue("address"));
   }
 
@@ -18,7 +18,7 @@ class KlevebrandSolarControllerDevice extends Device {
    * onAdded is called when the user adds the device, called just after pairing.
    */
   async onAdded() {
-    this.log('Klevebrand Solar Controller has been added');
+    this.log('Trest Solar Controller has been added');
   }
 
   /**
@@ -30,7 +30,7 @@ class KlevebrandSolarControllerDevice extends Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('Klevebrand Solar Controller device settings where changed');
+    this.log('Trest Solar Controller device settings where changed');
   }
 
   /**
@@ -39,16 +39,16 @@ class KlevebrandSolarControllerDevice extends Device {
    * @param {string} name The new name
    */
   async onRenamed(name) {
-    this.log('Klevebrand Solar Controller device was renamed');
+    this.log('Trest Solar Controller device was renamed');
   }
 
   /**
    * onDeleted is called when the user deleted the device.
    */
   async onDeleted() {
-    this.log('Klevebrand Solar Controller device has been deleted');
+    this.log('Trest Solar Controller device has been deleted');
   }
 
 }
 
-module.exports = KlevebrandSolarControllerDevice;
+module.exports = TrestSolarControllerDevice;

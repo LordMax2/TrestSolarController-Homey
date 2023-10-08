@@ -38,11 +38,18 @@
       }
     },
     {
-        "id": "current-charging more than",
+      "id": "current-charging-more-than",
       "title": {
         "en": "Battery is charging more than",
         "sv": "Batteriet laddar mer än"
-      }
+      },
+      "tokens": [
+        {
+          "name": "battery_charging",
+          "type": "number",
+          "title": { "en": "kWh" },
+          "example": { "en": "kWh" }
+        }
+      ]
     }
-  ]
-}
+} ] }

@@ -1,5 +1,5 @@
 {
-  "id": "se.klevebrand.solar",
+  "id": "se.trest.solar",
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
@@ -7,7 +7,7 @@
     "local"
   ],
   "name": {
-    "en": "Klevebrand Solar Controller"
+    "en": "Trest Solar Controller"
   },
   "description": {
     "en": "This application is an interface to gather data and communicate with an IoT device which can control your solar inverter on your solar grid. "
@@ -23,6 +23,6 @@
   },
   "author": {
     "name": "Max Klevebrand",
-    "email": "max.klevebrand@gmail.com"
+    "email": "max.klevebrand@trest.se"
   }
 }

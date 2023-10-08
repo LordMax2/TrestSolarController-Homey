@@ -3,7 +3,7 @@
 const { Driver } = require('homey');
 const FLowHandler = require('../../lib/FlowHandler.js');
 
-class KlevebrandSolarControllerDriver extends Driver {
+class TrestSolarControllerDriver extends Driver {
   /**
    * onInit is called when the driver is initialized.
    */
@@ -12,7 +12,7 @@ class KlevebrandSolarControllerDriver extends Driver {
 
     flowHandler.Init(this);
 
-    this.log('Klevebrand Solar Controller driver has been initialized!');
+    this.log('Trest Solar Controller driver has been initialized!');
   }
 
   /**
@@ -31,9 +31,9 @@ class KlevebrandSolarControllerDriver extends Driver {
 
     return [
       {
-        name: 'Klevebrand Solar Controller',
+        name: 'Trest Solar Controller',
         data: {
-          id: 'klevebrand-solar-controller'
+          id: 'trest-solar-controller'
         },
         store: {
           address: deviceIp
@@ -43,4 +43,4 @@ class KlevebrandSolarControllerDriver extends Driver {
   }
 }
 
-module.exports = KlevebrandSolarControllerDriver;
+module.exports = TrestSolarControllerDriver;
