@@ -1,5 +1,5 @@
 {
-  "name": "se.klevebrand.solar",
+  "name": "se.trest.solar.homey",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {},

@@ -1,5 +1,5 @@
 {
-  "id": "se.trest.solar",
+  "id": "se.trest.solar.homey",
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,

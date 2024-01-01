@@ -1,17 +1,16 @@
 'use strict';
 
 const { Device } = require('homey');
-const DeviceHandler = require('../../lib/DeviceHandler.js');
+const SolarModule = require('../../lib/SolarModule.js');
 
 class TrestSolarControllerDevice extends Device {
   async onInit() {
-    const deviceHandler = new DeviceHandler();
+    const solarModule = new SolarModule();
 
-    await deviceHandler.Init(this);
-    await deviceHandler.InitButtons(this);
+    await solarModule.Init(this);
+    await solarModule.InitButtons(this);
 
     this.log('Trest Solar Controller device has been initialized');
-    this.log('Ip address: ' + this.getStoreValue("address"));
   }
 
   /**
