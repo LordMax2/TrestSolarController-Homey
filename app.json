@@ -1,6 +1,6 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "se.klevebrand.solar",
+  "id": "se.trest.solar.homey",
   "version": "1.0.0",
   "compatibility": ">=5.0.0",
   "sdk": 3,
@@ -8,7 +8,7 @@
     "local"
   ],
   "name": {
-    "en": "Klevebrand Solar Controller"
+    "en": "Trest Solar Controller"
   },
   "description": {
     "en": "This application is an interface to gather data and communicate with an IoT device which can control your solar inverter on your solar grid. "
@@ -24,7 +24,7 @@
   },
   "author": {
     "name": "Max Klevebrand",
-    "email": "max.klevebrand@gmail.com"
+    "email": "max.klevebrand@trest.se"
   },
   "flow": {
     "triggers": [
@@ -38,21 +38,33 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       },
       {
-        "id": "current-charging more than",
+        "id": "current-charging-more-than",
         "title": {
           "en": "Battery is charging more than",
           "sv": "Batteriet laddar mer än"
         },
+        "tokens": [
+          {
+            "name": "battery_charging",
+            "type": "number",
+            "title": {
+              "en": "kWh"
+            },
+            "example": {
+              "en": "kWh"
+            }
+          }
+        ],
         "args": [
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       }
@@ -68,7 +80,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       },
@@ -82,7 +94,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       },
@@ -96,7 +108,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       },
@@ -110,7 +122,7 @@
           {
             "type": "device",
             "name": "device",
-            "filter": "driver_id=klevebrand-solar-controller"
+            "filter": "driver_id=trest-solar-controller"
           }
         ]
       }
@@ -119,7 +131,7 @@
   "drivers": [
     {
       "name": {
-        "en": "Klevebrand Solar Controller"
+        "en": "Trest Solar Controller"
       },
       "class": "solarpanel",
       "capabilities": [
@@ -139,11 +151,33 @@
         "lan"
       ],
       "images": {
-        "small": "/drivers/klevebrand-solar-controller/assets/images/small.png",
-        "large": "/drivers/klevebrand-solar-controller/assets/images/large.png",
-        "xlarge": "/drivers/klevebrand-solar-controller/assets/images/xlarge.png"
+        "small": "/drivers/trest-solar-controller/assets/images/small.png",
+        "large": "/drivers/trest-solar-controller/assets/images/large.png",
+        "xlarge": "/drivers/trest-solar-controller/assets/images/xlarge.png"
       },
       "pair": [
+        {
+          "id": "login_credentials",
+          "template": "login_credentials",
+          "options": {
+            "logo": "logo.png",
+            "title": {
+              "en": "Login to your Trest account"
+            },
+            "usernameLabel": {
+              "en": "E-mail address"
+            },
+            "usernamePlaceholder": {
+              "en": ""
+            },
+            "passwordLabel": {
+              "en": "Password"
+            },
+            "passwordPlaceholder": {
+              "en": ""
+            }
+          }
+        },
         {
           "id": "list_devices",
           "template": "list_devices",
@@ -156,7 +190,31 @@
           "template": "add_devices"
         }
       ],
-      "id": "klevebrand-solar-controller"
+      "id": "trest-solar-controller",
+      "settings": [
+        {
+          "id": "email",
+          "type": "text",
+          "label": {
+            "en": "Email"
+          },
+          "value": "",
+          "hint": {
+            "en": "The email of the user."
+          }
+        },
+        {
+          "id": "password",
+          "type": "password",
+          "label": {
+            "en": "Password"
+          },
+          "value": "Secret",
+          "hint": {
+            "en": "The password of the user."
+          }
+        }
+      ]
     }
   ],
   "capabilities": {

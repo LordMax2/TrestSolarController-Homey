@@ -25,16 +25,28 @@
     "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
   },
   "pair": [
-   {
-    "id": "list_devices",
-    "template": "list_devices",
-    "navigation": {
-      "next": "add_devices"
+    {
+      "id": "login_credentials",
+      "template": "login_credentials",
+      "options": {
+        "logo": "logo.png",
+        "title": {
+          "en": "Login to your Trest account"
+        },
+        "usernameLabel": { "en": "E-mail address" },
+        "usernamePlaceholder": { "en": "" },
+        "passwordLabel": { "en": "Password" },
+        "passwordPlaceholder": { "en": "" }
+      }
+    },
+    {
+      "id": "list_devices",
+      "template": "list_devices",
+      "navigation": { "next": "add_devices" }
+    },
+    {
+      "id": "add_devices",
+      "template": "add_devices"
     }
-   },
-   {
-    "id": "add_devices",
-    "template": "add_devices"
-   }
   ]
 }

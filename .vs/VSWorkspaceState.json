@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\drivers",
+    "\\drivers\\trest-solar-controller"
   ],
+  "SelectedNode": "\\drivers\\trest-solar-controller\\driver.js",
   "PreviewInSolutionExplorer": false
 }

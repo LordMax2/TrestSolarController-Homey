@@ -1,0 +1,16 @@
+[
+    {
+      "id": "email",
+      "type": "text",
+      "label": { "en": "Email" },
+      "value": "",
+      "hint": { "en": "The email of the user." }
+    },
+    {
+      "id": "password",
+      "type": "password",
+      "label": { "en": "Password" },
+      "value": "Secret",
+      "hint": { "en": "The password of the user." }
+    }
+  ]

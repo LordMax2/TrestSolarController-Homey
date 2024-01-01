@@ -1,22 +1,40 @@
-'use strict';
+const Homey = require("homey");
 
-const { Driver } = require('homey');
+class TrestSolarControllerDriver extends Homey.Driver {
+  async onPair(session) {
+    let username = "";
+    let password = "";
 
-class TrestSolarControllerDriver extends Driver {
-  /**
-   * onInit is called when the driver is initialized.
-   */
-  async onInit() {
-    this.log('Trest Solar Controller driver has been initialized!');
-  }
+    session.setHandler("login", async (data) => {
+      username = data.username;
+      password = data.password;
+      
+      return true;
+    });
 
-  /**
-   * onPairListDevices is called when a user is adding a device
-   * and the 'list_devices' view is called.
-   * This should return an array with the data of devices that are available for pairing.
-   */
-  async onPairListDevices() {
-    return [0];
+    session.setHandler("list_devices", async () => {
+      const myDevices = [
+        {
+          name: "Trest Solar Controller",
+          id: "trest-solar-controller"
+        }
+      ];
+
+      const devices = myDevices.map((myDevice) => {
+        return {
+          name: myDevice.name,
+          data: {
+            id: myDevice.id,
+          },
+          settings: {
+            username,
+            password,
+          },
+        };
+      });
+
+      return devices;
+    });
   }
 }
 
