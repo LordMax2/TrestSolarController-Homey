@@ -1,5 +1,5 @@
 # Trest Solar Controller
 
-I will update this readme and add the OpenAPI documents to the Klevebrand Solar Controller soon! 
+The full documentation can be found at: https://docs.trest.se/
 
 This application is an interface to gather data and communicate with an IoT device which can control your solar inverter on your solar grid. 
