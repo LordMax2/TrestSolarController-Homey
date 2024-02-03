@@ -63,28 +63,28 @@
   ],
   "actions": [
     {
-      "id": "buy-mode",
+      "id": "buy_mode",
       "title": {
         "en": "Set buy mode",
         "sv": "Sätt köp läge"
       }
     },
     {
-      "id": "sell-mode",
+      "id": "sell_mode",
       "title": {
         "en": "Set sell mode",
         "sv": "Sätt sälj läge"
       }
     },
     {
-      "id": "self-sufficient-mode",
+      "id": "self_sufficient_mode",
       "title": {
         "en": "Set self sufficient mode",
         "sv": "Sätt självförsörjande läge"
       }
     },
     {
-      "id": "pause-mode",
+      "id": "pause_mode",
       "title": {
         "en": "Set pause mode",
         "sv": "Sätt pause läge"

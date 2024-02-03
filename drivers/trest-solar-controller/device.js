@@ -10,6 +10,7 @@ class TrestSolarControllerDevice extends Device {
     solarModule.registerCapabilityListeners(this);
     solarModule.activateTriggerFlowCards(this);
     //solarModule.activateConditionFlowCards(this);
+    solarModule.activateActionFlowCards(this);
     await solarModule.Init(this);
     await solarModule.InitButtons(this);
 
