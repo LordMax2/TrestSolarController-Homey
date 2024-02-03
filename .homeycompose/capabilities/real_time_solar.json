@@ -3,9 +3,9 @@
     "title": { 
         "en": "Solar grid now generating",
         "sv": "Solanläggningen genererar nu"
-     },
+      },
     "getable": true,
-    "setable": false,
+    "setable": true,
     "uiQuickAction": false,
     "icon": "/assets/solar-panel.svg"
   }
