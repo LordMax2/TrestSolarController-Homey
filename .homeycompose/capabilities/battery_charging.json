@@ -5,7 +5,7 @@
         "sv": "Batteriet laddar nu"
      },
     "getable": true,
-    "setable": false,
+    "setable": true,
     "uiQuickAction": false,
     "icon": "/assets/battery_charge.svg"
   }

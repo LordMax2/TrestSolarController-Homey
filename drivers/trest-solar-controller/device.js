@@ -7,7 +7,9 @@ class TrestSolarControllerDevice extends Device {
   async onInit() {
     const solarModule = new SolarModule();
 
-    await solarModule.activateFlowCards(this);
+    solarModule.registerCapabilityListeners(this);
+    solarModule.activateTriggerFlowCards(this);
+    //solarModule.activateConditionFlowCards(this);
     await solarModule.Init(this);
     await solarModule.InitButtons(this);
 

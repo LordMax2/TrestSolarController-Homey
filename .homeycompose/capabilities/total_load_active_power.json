@@ -5,7 +5,7 @@
         "sv": "Huset drar just nu"
      },
     "getable": true,
-    "setable": false,
+    "setable": true,
     "uiQuickAction": false,
     "icon": "/assets/house.svg"
   }

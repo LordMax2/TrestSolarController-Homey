@@ -1,60 +1,38 @@
 {
   "conditions": [
     {
-      "id": "battery-more-than",
+      "id": "measure_battery_changed",
       "title": {
         "en": "Batteriet blir större än",
         "sv": "Battery is more than"
       },
       "titleFormatted": { 
-        "en": "Battery is more than [[kWh]] kWh", 
-        "sv": "Batteriet blir större än [[kWh]] kWh" 
+        "en": "Battery is more than [[measure_battery]] kWh", 
+        "sv": "Batteriet blir större än [[measure_battery]] kWh" 
       },
       "args": [
         {
           "type": "number",
-          "name": "kWh",
+          "name": "measure_battery",
           "title": { "en": "Number", "sv": "Nummer" },
           "placeholder": { "en": "5kWh" }
         }
       ]
     },
     {
-      "id": "battery-less-than",
-      "title": {
-        "en": "Batteriet blir mindre än",
-        "sv": "Battery is less than"
-      },
-      "titleFormatted": { 
-        "en": "Battery is less than [[kWh]] kWh", 
-        "sv": "Batteriet blir mindre än [[kWh]] kWh" 
-      },
-      "args": [
-        {
-          "type": "number",
-          "name": "kWh",
-          "title": { 
-            "en": "Number", 
-            "sv": "Nummer" 
-          },
-          "placeholder": { "en": "5kWh" }
-        }
-      ]
-    },
-    {
-      "id": "solar-generating",
+      "id": "real_time_solar_changed",
       "title": {
         "en": "Solar panels are generating more than",
         "sv": "Solpanelerna genererar mer än"
       },
       "titleFormatted": { 
-        "en": "Solar panels are generating more than [[kWh]] kWh",
-        "sv": "Solpanelerna genererar mer än [[kWh]] kWh"
+        "en": "Solar panels are generating more than [[real_time_solar]] kWh",
+        "sv": "Solpanelerna genererar mer än [[real_time_solar]] kWh"
       },
       "args": [
         {
           "type": "number",
-          "name": "kWh",
+          "name": "real_time_solar",
           "title": { 
             "en": "Number", 
             "sv": "Nummer" 
@@ -64,19 +42,19 @@
       ]
     },
     {
-      "id": "current-charging-more-than",
+      "id": "battery_charging_changed",
       "title": {
         "en": "Battery is charging more than",
         "sv": "Batteriet laddar mer än"
       },
       "titleFormatted": { 
-        "en": "Battery is charging more than [[kWh]] kWh", 
-        "sv": "Batteriet laddar mer än [[kWh]] kWh" 
+        "en": "Battery is charging more than [[battery_charging]] kWh", 
+        "sv": "Batteriet laddar mer än [[battery_charging]] kWh" 
       },
       "args": [
         {
           "type": "number",
-          "name": "kWh",
+          "name": "battery_charging",
           "title": { "en": "Number", "sv": "Nummer" },
           "placeholder": { "en": "5kWh" }
         }
@@ -115,38 +93,57 @@
   ],
   "triggers": [
     {
-      "id": "solar-generating",
+      "id": "real_time_solar_changed",
       "title": {
         "en": "Solar panels are generating more than",
         "sv": "Solpanelerna genererar mer än"
       },
       "titleFormatted": { 
-        "en": "Solar panels are generating more than [[kWh]] kWh",
-        "sv": "Solpanelerna genererar mer än [[kWh]] kWh"
+        "en": "Solar panels are generating more than [[real_time_solar]] kWh",
+        "sv": "Solpanelerna genererar mer än [[real_time_solar]] kWh"
       },
       "args": [
         {
           "type": "number",
-          "name": "kWh",
+          "name": "real_time_solar",
           "title": { "en": "Number", "sv": "Nummer" },
           "placeholder": { "en": "5kWh" }
         }
       ]
     },
     {
-      "id": "current-charging-more-than",
+      "id": "battery_charging_changed",
       "title": {
         "en": "Battery is charging more than",
         "sv": "Batteriet laddar mer än"
       },
       "titleFormatted": { 
-        "en": "Battery is charging more than [[kWh]] kWh", 
-        "sv": "Batteriet laddar mer än [[kWh]] kWh" 
+        "en": "Battery is charging more than [[battery_charging]] kWh", 
+        "sv": "Batteriet laddar mer än [[battery_charging]] kWh" 
       },
       "args": [
         {
           "type": "number",
-          "name": "kWh",
+          "name": "battery_charging",
+          "title": { "en": "Number", "sv": "Nummer" },
+          "placeholder": { "en": "5kWh" }
+        }
+      ]
+    },
+    {
+      "id": "total_load_active_power_changed",
+      "title": {
+        "en": "Total load active power more than",
+        "sv": "Totala aktiva strömmen är mer än"
+      },
+      "titleFormatted": { 
+        "en": "Total load active power more than [[total_load_active_power]] kWh", 
+        "sv": "Totala aktiva strömmen är mer än [[total_load_active_power]] kWh" 
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "total_load_active_power",
           "title": { "en": "Number", "sv": "Nummer" },
           "placeholder": { "en": "5kWh" }
         }
