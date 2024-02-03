@@ -2,17 +2,21 @@
 
 const { Device } = require('homey');
 const SolarModule = require('../../lib/SolarModule.js');
+const TrestSolarModule = require('../../lib/modules/TrestSolarModule.js');
 
 class TrestSolarControllerDevice extends Device {
   async onInit() {
-    const solarModule = new SolarModule();
+    this.solarModule = new SolarModule();
+    await this.customInit();
+  }
 
-    solarModule.registerCapabilityListeners(this);
-    solarModule.activateTriggerFlowCards(this);
-    //solarModule.activateConditionFlowCards(this);
-    solarModule.activateActionFlowCards(this);
-    await solarModule.Init(this);
-    await solarModule.InitButtons(this);
+  async customInit() {
+    this.solarModule.registerCapabilityListeners(this);
+    this.solarModule.activateTriggerFlowCards(this);
+    //this.solarModule.activateConditionFlowCards(this);
+    this.solarModule.activateActionFlowCards(this);
+    await this.solarModule.Init(this);
+    await this.solarModule.InitButtons(this);
 
     this.log('Trest Solar Controller device has been initialized');
   }
@@ -33,7 +37,9 @@ class TrestSolarControllerDevice extends Device {
    * @returns {Promise<string|void>} return a custom message that will be displayed
    */
   async onSettings({ oldSettings, newSettings, changedKeys }) {
-    this.log('Trest Solar Controller device settings where changed');
+    this.solarModule = new SolarModule();
+    this.setSettings(newSettings);
+    await this.customInit();
   }
 
   /**
