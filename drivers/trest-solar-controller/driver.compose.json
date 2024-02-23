@@ -13,6 +13,9 @@
     "real_time_solar",
     "total_load_active_power"
   ],
+  "energy": {
+    "batteries": ["AAA"]
+  },
   "platforms": [
     "local"
   ],
@@ -20,9 +23,9 @@
     "lan"
   ],
   "images": {
-    "small": "{{driverAssetsPath}}/images/small.png",
-    "large": "{{driverAssetsPath}}/images/large.png",
-    "xlarge": "{{driverAssetsPath}}/images/xlarge.png"
+    "small": "/assets/icon_small.jpg",
+    "large": "/assets/icon_large.jpg",
+    "xlarge": "/assets/icon.jpg"
   },
   "pair": [
     {
