@@ -1,5 +1,5 @@
 {
-  "id": "se.trest.solar.homey",
+  "id": "trest.solar",
   "version": "1.1.2",
   "compatibility": ">=5.0.0",
   "sdk": 3,
@@ -7,7 +7,7 @@
     "local"
   ],
   "name": {
-    "en": "Trest Solar Controller"
+    "en": "Trest Solar"
   },
   "description": {
     "en": "Integrate your Trest Solar Controller in your Homey automation and take intricate controls for determining optimal buy and sell hours."
