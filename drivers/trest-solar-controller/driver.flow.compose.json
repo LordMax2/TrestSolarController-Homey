@@ -59,6 +59,25 @@
           "placeholder": { "en": "5kWh" }
         }
       ]
+    },
+    {
+      "id": "total_load_active_power_changed",
+      "title": {
+        "en": "Total load active power more than",
+        "sv": "Totala aktiva strömmen är mer än"
+      },
+      "titleFormatted": { 
+        "en": "Total load active power more than [[total_load_active_power]] kWh", 
+        "sv": "Totala aktiva strömmen är mer än [[total_load_active_power]] kWh" 
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "total_load_active_power",
+          "title": { "en": "Number", "sv": "Nummer" },
+          "placeholder": { "en": "5kWh" }
+        }
+      ]
     }
   ],
   "actions": [
