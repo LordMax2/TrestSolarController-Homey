@@ -1,5 +1,5 @@
 # Trest Solar Controller
 
-The full documentation can be found at: https://docs.trest.se/
+An interface application for gathering data and communicating with the Trest Solar Controller IoT device, enabling control over your solar inverter within your solar grid.
 
-This application is an interface to gather data and communicate with an IoT device which can control your solar inverter on your solar grid. 
+The full documentation can be found at: https://docs.trest.se/
