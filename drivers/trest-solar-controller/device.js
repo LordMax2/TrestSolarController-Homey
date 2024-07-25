@@ -11,12 +11,14 @@ class TrestSolarControllerDevice extends Device {
   }
 
   async customInit() {
+    await this.solarModule.Init(this);
+    await this.solarModule.InitButtons(this);
+    
     this.solarModule.registerCapabilityListeners(this);
+
     this.solarModule.activateTriggerFlowCards(this);
     //this.solarModule.activateConditionFlowCards(this);
     this.solarModule.activateActionFlowCards(this);
-    await this.solarModule.Init(this);
-    await this.solarModule.InitButtons(this);
 
     this.log('Trest Solar Controller device has been initialized');
   }
